@@ -5,6 +5,10 @@ import Student from './models/student.js';
 import studentRouter from './routes/studentRouter.js';
 import itemRouter from './routes/itemRouter.js';
 import userRouter from './routes/userRouter.js';
+import jwt from "jsonwebtoken";
+
+
+
 
 const app=express();
 mongoose.connect("mongodb+srv://admin:123@cluster0.qqmhplg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0").then(
@@ -21,7 +25,15 @@ app.use(bodyParser.json());
 app.use(
     (req,res,next)=>{
         const header=req.header("Authorization");
-        console.log(header);
+        if(header !=null){
+            const token=header.replace("Bearer ","");
+            jwt.verify(token,"random465",(err,decoded)=>{
+            console.log(decoded)
+
+        
+        
+        })
+    }
         //next()
 
     }
