@@ -22,29 +22,24 @@ mongoose.connect("mongodb+srv://admin:123@cluster0.qqmhplg.mongodb.net/?retryWri
 )
 
 app.use(bodyParser.json());
-app.use(
-  (req, res, next) => {
+app.use((req, res, next) => {
     const header = req.header("Authorization");
     if (header != null) {
-      const token = header.replace("Bearer ", "");
-      jwt.verify(token, "random465", (err, decoded) => {
-        if (err) {
-          return res.status(403).json({ message: "Invalid token" });
-        }
-        console.log("Decoded Token:",decoded);
-        return res.json({
-            message:"Valid token",
-            user:decoded
+        const token = header.replace("Bearer ", "");
+        jwt.verify(token, "random465", (err, decoded) => {
+            if (err) {
+                console.log("Invalid token");
+                return res.status(403).json({ message: "Invalid token" });
+            }
+            req.user = decoded;
+            next(); // ✅ continue to the route handler
         });
-      });
     } else {
-      return res.status(401).json({
-       message: "No token provided"
-      })
+        next(); // ✅ Allow public routes to proceed
     }
+});
 
-  }
-)
+
 
 app.use("/student",studentRouter);
 app.use("/api/item",itemRouter);

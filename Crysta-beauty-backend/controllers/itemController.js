@@ -1,6 +1,8 @@
 import Item from "../models/item.js";
 
 export function getAllItems(req,res){
+   
+
     Item.find().then(
         (items)=>{
             res.json(items)
@@ -15,6 +17,15 @@ export function getAllItems(req,res){
 }
 
 export function saveItem(req,res){
+    console.log(req.user)
+    if(req.user.role !="admin"){
+        res.status(403).json({
+            message:"You cannot add items"
+        })
+        return;
+    }
+    
+
     const item=new Item(req.body)
     item.save().then(
         ()=>{
