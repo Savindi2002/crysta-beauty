@@ -1,8 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import Student from './models/student.js';
-import studentRouter from './routes/studentRouter.js';
 import itemRouter from './routes/itemRouter.js';
 import userRouter from './routes/userRouter.js';
 import jwt from "jsonwebtoken";
@@ -25,6 +23,7 @@ app.use(bodyParser.json());
 app.use((req, res, next) => {
     const header = req.header("Authorization");
     if (header != null) {
+        return next();}
         const token = header.replace("Bearer ", "");
         jwt.verify(token, "random465", (err, decoded) => {
             if (err) {
@@ -34,10 +33,8 @@ app.use((req, res, next) => {
             req.user = decoded;
             next(); // ✅ continue to the route handler
         });
-    } else {
-        next(); // ✅ Allow public routes to proceed
-    }
-});
+    });
+
 
 
 
@@ -51,3 +48,4 @@ app.listen(5000,
     ()=>{
     console.log("Server is running on port 5000");
 })
+
