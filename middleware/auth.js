@@ -1,4 +1,4 @@
-function authMiddleware(req, res, next) {
+export  default function authMiddleware(req, res, next) {
     const header = req.header("Authorization");
 
     if (!header) {
