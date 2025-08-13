@@ -5,7 +5,7 @@ export function saveUser(req,res){
 
    if(req.body.role == "admin"){
     if(req.user == null){
-        res.starus(403).json({
+        res.status(403).json({
             message:"Please login as admin before creating an admin account",
         });
         return;

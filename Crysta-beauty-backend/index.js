@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import userRouter from './routes/userRouter.js';
 import productRouter from './routes/productRouter.js';
-import authMiddleware from '../middleware/auth.js';
+import authMiddleware from './middleware/auth.js';
 import jwt from "jsonwebtoken";
 
 const app = express();
