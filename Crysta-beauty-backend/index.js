@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import userRouter from './routes/userRouter.js';
 import productRouter from './routes/productRouter.js';
 import authMiddleware from './middleware/auth.js';
-import jwt from "jsonwebtoken";
+import jwt from 'jsonwebtoken';    
 
 const app = express();
 
