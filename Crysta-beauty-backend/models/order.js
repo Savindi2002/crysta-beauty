@@ -44,6 +44,13 @@ const orderSchema = new mongoose.Schema({
         ],
         required:true
 
+    },
+    total:{
+        type:Number,
+        required:true
     }
    
-});
+})
+
+const Order=mongoose.model("orders",orderSchema)
+export default Order;
