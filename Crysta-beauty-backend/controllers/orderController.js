@@ -1,4 +1,4 @@
-import Order from "../models/order";
+import Order from "../models/order.js";
 export function createOrder(req,res){
 
     if (req.user == null){
@@ -18,12 +18,12 @@ export function createOrder(req,res){
         phoneNumber:body.phoneNumber,
         billItems:[],
         total:0
-  }
-  const lastBills=Order.find().sort({
+  };
+Order.find().sort({
     date:-1
-  }).limit(1);
-
-  if(lastBills.length == 0){
+  })
+  .limit(1).then((lastBills)=>{
+       if(lastBills.length == 0){
     orderData.orderId="ORD0001"
   }else{
     const lastBill=lastBills[0];
@@ -33,7 +33,7 @@ export function createOrder(req,res){
     const lastOrderNumberInt=parseInt(lastOrderNumber);//61
     const newOrderNumberInt=lastOrderNumberInt+1;//62
 
-    const newOrderNumberStr= String(newOrderNumberInt).padStart(4, '0'); //"0062"
+    const newOrderNumberStr= newOrderNumberInt.toString().padStart(4, '0'); //"0062"
     orderData.orderId="ORD"+newOrderNumberStr;
 
   }
@@ -48,6 +48,8 @@ export function createOrder(req,res){
     res.status(500).json({
         message:"Order not saved",
     });
+  });
+
   });
 
 }

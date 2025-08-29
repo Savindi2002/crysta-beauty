@@ -5,6 +5,7 @@ import userRouter from './routes/userRouter.js';
 import productRouter from './routes/productRouter.js';
 import authMiddleware from './middleware/auth.js';
 import jwt from 'jsonwebtoken';    
+import orderRouter from './routes/orderRouter.js';
 
 const app = express();
 
@@ -25,6 +26,8 @@ app.use("/api/user", userRouter);
 
 // Protected routes (token required)
 app.use("/api/product", authMiddleware, productRouter);
+
+app.use("/api/order",orderRouter)
 
 app.listen(5000, () => {
     console.log("Server is running on port 5000");
