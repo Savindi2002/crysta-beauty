@@ -17,7 +17,7 @@ export function createOrder(req,res){
         address:body.address,
         phoneNumber:body.phoneNumber,
         billItems:[],
-        total:0
+        total:0,
   };
 Order.find().sort({
     date:-1

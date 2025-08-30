@@ -27,7 +27,7 @@ app.use("/api/user", userRouter);
 // Protected routes (token required)
 app.use("/api/product", authMiddleware, productRouter);
 
-app.use("/api/order",orderRouter)
+app.use("/api/order",authMiddleware,orderRouter)
 
 app.listen(5000, () => {
     console.log("Server is running on port 5000");
