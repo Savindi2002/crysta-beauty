@@ -38,6 +38,10 @@ Order.find().sort({
 
   }
 
+  for(let i=0;i<body.billItems.length;i++){
+    const billItem=body.billItems[i];
+  }
+
   const order=new Order(orderData);
   order.save().then(()=>{
     res.json({
@@ -53,3 +57,35 @@ Order.find().sort({
   });
 
 }
+
+export function getOrders(req,res){
+  if(req.user ==null){
+    res.status(401).json({
+      message:"Unauthorized"
+    })
+    return;
+    }
+    if(req.user.role == "admin" ){
+      Order.find().then(
+        (orders)=>{
+          res.json(orders);
+        }
+      ).catch(
+        (err)=>{
+          res.status(500).json({
+          message:"Ordera not found"
+          })
+    }
+  )
+}else{
+  Order.find({
+    email:req.user.email
+  }).then((orders)=>{
+  res.json(orders);
+  }).catch( ( err)=>{res.status(500).json({
+    message:"Orders not found"
+    })
+}
+  )
+}}
+

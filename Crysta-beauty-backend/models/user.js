@@ -25,7 +25,7 @@ const userSchema=new mongoose.Schema({
     },
     phone:{
         type: String,
-        required:true,
+        //required:true,
         default:"Not given"
     },
     isDisabled:{
