@@ -73,7 +73,7 @@ export function getOrders(req,res){
       ).catch(
         (err)=>{
           res.status(500).json({
-          message:"Ordera not found"
+          message:"Order not found"
           })
     }
   )
