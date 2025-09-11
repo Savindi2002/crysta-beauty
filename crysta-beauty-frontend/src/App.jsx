@@ -4,14 +4,20 @@ import ProductCard from './components/product-card'
 import Header from './components/header'
 import LoginPage from './pages/loginPage';
 import AdminPage from './pages/AdminPage';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   
 
   return (
-  //  <LoginPage/>
-  <AdminPage/>
-    
+  <BrowserRouter>
+      <Routes path="/">
+      <Route path="/admin" element={<AdminPage/>}/>
+      <Route path="/login" element={<LoginPage/>}/>
+      
+      
+      </Routes>
+  </BrowserRouter>
   );
 }
 
