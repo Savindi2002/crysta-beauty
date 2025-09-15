@@ -1,13 +1,14 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { FaUsers } from 'react-icons/fa';
-
+import { FaWarehouse } from 'react-icons/fa';
+import { FaFileInvoiceDollar } from 'react-icons/fa6';
 export default  function AdminPage(){
     return(
         <div className="w-full h-screen bg-gray-200 flex p-2">
             <div className="h-full w-[300px] ">
-           <Link to="/admin/users" className="p-2 border flex  items-center"><FaUsers/>Users</Link>
-           <Link to="/admin/products" className="block p-2">Products</Link>
-           <Link to="/admin/orders" className="block p-2">Orders</Link>
+           <Link to="/admin/users" className="p-2 border flex  items-center"><FaUsers className="mr-2"/>Users</Link>
+           <Link to="/admin/products" className=" p-2 border flex  items-center"><FaWarehouse className="mr-2"/>Products</Link>
+           <Link to="/admin/orders" className="p-2 border flex  items-center">< FaFileInvoiceDollar className="mr-2"/>Orders</Link>
            </div>
             <div className="h-full bg-white w-[calc(100vw-300px)] rounded-lg">
                 <Routes path="/*">

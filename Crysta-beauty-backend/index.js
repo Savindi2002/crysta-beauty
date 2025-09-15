@@ -6,11 +6,13 @@ import productRouter from './routes/productRouter.js';
 import authMiddleware from './middleware/auth.js';
 import jwt from 'jsonwebtoken';    
 import orderRouter from './routes/orderRouter.js';
+import dotenv from 'dotenv';
 
+dotenv.config()
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect("mongodb+srv://admin:123@cluster0.qqmhplg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect(process.env.MONGO_URL)
     .then(() => {
         console.log("Connected to the database");
     })

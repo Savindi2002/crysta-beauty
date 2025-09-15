@@ -1,6 +1,8 @@
 import jwt  from "jsonwebtoken";
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
+import dotenv from 'dotenv';
+dotenv.config()
 export function saveUser(req,res){
 
    if(req.body.role == "admin"){
@@ -58,7 +60,7 @@ export function loginUser(req,res){
                     isDisabled:user.isDisabled,
                     isEmailVerified:user.isEmailVerified       
                 }
-            const token=jwt.sign(userData,"random465",{expiresIn:"1h"});
+            const token=jwt.sign(userData,process.env.JWT_KEY,{expiresIn:"1h"});
             res.json({
                 message:"Login successful",
                 token:token,
