@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 app.use("/api/user", userRouter);
 
 // Protected routes (token required)
-app.use("/api/product", productRouter);
+app.use("/api/product",productRouter);
 
 app.use("/api/order",authMiddleware,orderRouter)
 

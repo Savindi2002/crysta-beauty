@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function LoginPage(){
     const[email,setEmail]=useState("");
     const[password,setPassword]=useState("");
-     const navigate =useNavigate()
+    const navigate =useNavigate();
 
     function handlelogin(){
         console.log("Email: ",email)
@@ -19,15 +19,15 @@ export default function LoginPage(){
         }).then(
             (response)=>{
                 console.log("Login successful",response.data);
-                toast.success("Login successful");
+                //toast.success("Login successful");
                 localStorage.setItem("token",response.data.token);
 
 
                 const user=response.data.user;
-                if(user.role == "admin"){
-                    navigate("/admin")
+                if(user.role === "admin"){
+                    navigate("/admin");
                 }else{
-                    navigate=("/")
+                    navigate("/");
                 }
             }
         ).catch(
