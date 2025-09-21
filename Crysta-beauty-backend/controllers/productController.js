@@ -1,7 +1,9 @@
 import Product from "../models/product.js";
 export function createProduct(req, res) {
+console.log("Decoded user from token:", req.user);
+
     if (!req.user) {
-        return res.status(403).json({ message: "You need to login first" });
+        return res.status(403).json({ message: "You need to login firsthh" });
     }
 
     if (req.user.role !== "admin") {
