@@ -1,26 +1,21 @@
 import Product from "../models/product.js";
 export function createProduct(req, res) {
-console.log("Decoded user from token:", req.user);
-
-    if (!req.user) {
-        return res.status(403).json({ message: "You need to login firsthh" });
-    }
-
-    if (req.user.role !== "admin") {
-        return res.status(403).json({ message: "You are not authorized to create a product" });
-    }
-
     const product = new Product(req.body);
 
     product.save()
         .then(() => {
-            res.json({ message: "Product saved successfully" });
+            res.status(201).json({
+                message: "Product created successfully"
+            });
         })
         .catch((err) => {
-            console.error(err);
-            res.status(500).json({ message: "Product not saved" });
+            res.status(500).json({
+                message: "Product not saved",
+                error: err.message
+            });
         });
 }
+
 
 export function getProducts(req, res) {
     Product.find().then(
