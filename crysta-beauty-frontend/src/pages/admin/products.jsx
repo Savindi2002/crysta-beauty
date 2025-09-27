@@ -26,7 +26,7 @@ export default function AdminProductsPage(){
 
     return(
         <div className="w-full h-full  rounded-lg">
-            <table className="w-full bg-red-900" >
+            <table className="w-full " >
                 <thead>
                     <tr>
                         <th className="p-2">Product ID</th>
@@ -39,44 +39,29 @@ export default function AdminProductsPage(){
 
                 </thead>
                 <tbody>
-                    <tr>
-                       <td className="p-2">1</td> 
-                       <td className="p-2">Product 1</td> 
-                       <td className="p-2">100</td> 
-                       <td className="p-2">150</td> 
-                       <td className="p-2">10</td> 
-                    </tr>
-                    <tr>
-                       <td className="p-2">1</td> 
-                       <td className="p-2">Product 1</td> 
-                       <td className="p-2">100</td> 
-                       <td className="p-2">150</td> 
-                       <td className="p-2">10</td> 
-                    </tr>
+                {
+                products.map(
+                (product,index)=>{
+                    console.log("mapping"+product.productId)
+                    return(
+                        <tr key={index} className="border-b-2 border-gray-300 text-center cursor-pointer hover:">
+                            <td className="p-2">{product.productId}</td>
+                             <td className="p-2">{product.name}</td>
+                              <td className="p-2">{product.price}</td>
+                               <td className="p-2">{product.labeledPrice}</td>
+                                <td className="p-2">{product.stock}</td>
+
+                        </tr>
+                    )
+                }
+             )
+            }
 
                 </tbody>
          
             </table>
            {
-             products.map(
-                (product,index)=>{
-                    console.log("mapping"+product.productId)
-                    // return(
-                    //     <div key={index} className="w-full h-[100px] bg-gray-300 flex items-center justify-between p-2">
-                    //         <div className="flex items-center">
-                    //             <img className="w-[50px] h-[50px] rounded-lg" src={product.image} alt=""/>
-                    //             <h1 className="text-xl font-bold ml-2">{product.name}</h1>
-                    //         </div>
-                    //         <div className="flex items-center">
-                                
-                    //             <h1 className="text-xl font-bold ml-2">{product.name}</h1>
-                    //             <button className="bg-red-500 text-white p-2 rounded-lg ml-2">Delete</button>
-                    //         </div>
-                    //         </div>
-                        
-                    // )
-                }
-             )
+             
            }
         </div>
     )
