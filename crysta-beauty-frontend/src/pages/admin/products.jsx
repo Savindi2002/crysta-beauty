@@ -27,7 +27,14 @@ export default function AdminProductsPage(){
     return(
         <div className="w-full h-full  rounded-lg">
            {
-            //product.
+             products.map(
+                (product)=>{
+                    console.log("mapping"+product.productId)
+                    return(
+                        <h1>{product.productId}</h1>
+                    )
+                }
+             )
            }
         </div>
     )
