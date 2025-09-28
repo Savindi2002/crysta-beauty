@@ -3,7 +3,8 @@ import { FaUsers } from 'react-icons/fa';
 import { FaWarehouse } from 'react-icons/fa';
 import { FaFileInvoiceDollar } from 'react-icons/fa6';
 import AdminProductsPage from "./admin/products";
-// import AddProductsPage from "./admin"; 
+import AddProductForm from "./admin/addProductPage";
+ 
 export default  function AdminPage(){
     
     return(
@@ -18,7 +19,7 @@ export default  function AdminPage(){
                 <Route  path="/users" element={<h1>Users</h1>}/>
                 <Route  path="/products" element={<AdminProductsPage/>}/>
                 <Route  path="/Orders" element={<h1>Orders</h1>}/>
-                <Route path="/addProduct" element={<>AddProductForm</>}/>
+                <Route path="/addProduct" element={<AddProductForm/>}/>
                 </Routes>
             </div>
             
