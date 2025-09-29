@@ -19,7 +19,7 @@ export default function LoginPage(){
         }).then(
             (response)=>{
                 console.log("Login successful",response.data);
-                //toast.success("Login successful");
+                toast.success("Login successful");
                 localStorage.setItem("token",response.data.token);
 
 
