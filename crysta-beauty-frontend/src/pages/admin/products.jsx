@@ -73,3 +73,5 @@ export default function AdminProductsPage(){
         </div>
     )
 }
+//https://ucfjibzzteisykfjqnys.supabase.co
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVjZmppYnp6dGVpc3lrZmpxbnlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkxOTY2MTgsImV4cCI6MjA3NDc3MjYxOH0.WcCHvfSdh0ssNCdyvQrCu9pLiFyT9ikZDUIn7QBosX4
