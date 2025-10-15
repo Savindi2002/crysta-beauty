@@ -4,7 +4,7 @@ export default function Testing(){
     const [file,setfile]=useState(null)
 
     function handleUpload(){
-        
+
     }
   
     return(
@@ -13,6 +13,7 @@ export default function Testing(){
                 (e)=>{
                     setfile(e.target.files[0])
                     }}/>
+                    <button onClick={handleUpload} className="bg-gray-700 text-white p-2 rounded-lg">Upload</button>
         </div>
     )
 }
