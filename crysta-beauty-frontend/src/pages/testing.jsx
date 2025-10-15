@@ -12,12 +12,19 @@ export default function Testing(){
         const supabase=createClient("https://ucfjibzzteisykfjqnys.supabase.co",)
 
         function handleUpload(){
-            supabase.storage.form("images").upload("<file name>",file,{
+
+
+
+            supabase.storage.form("images").upload(file.name,file,{
                 cacheControl:"3600",
             upsert :false,    
             }).then(
                 ()=>{
                     TransformStream.success("File upload successfully")
+                }
+            ).catch(
+                (errorr)=>{
+                    TransformStream.error("File upload failed")
                 }
             )
         }
